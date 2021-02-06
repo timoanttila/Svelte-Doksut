@@ -1,1 +1,1 @@
-# Svelte-Doksut
+# Doksut
