@@ -8,4 +8,4 @@ However, I really like websites created by Swagger and our partner uses it. I th
 
 Doksut is a very simple JSON reader that turns data into an easy-to-read website. JSON format and the style of the page is similar to Swagger. The JSON sample codes are awful to write, but I only use them in one project. Not mandatory.
 
-Builded file doksut.js is only 14KB and can be attached to any file on the website. Reads /docs.json by default.
+Builded file [doksut.js](https://github.com/timoanttila/Svelte-Doksut/blob/main/doksut.js) is only 14KB and can be attached to any file on the website. Reads [/docs.json](https://github.com/timoanttila/Svelte-Doksut/blob/main/public/docs.json) by default.
