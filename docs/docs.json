@@ -23,6 +23,14 @@
 						0,
 						1
 					],
+					"params": [
+						{
+							"name": "menu",
+							"req": true,
+							"type": "string",
+							"in": "query"
+						}
+					],
 					"responses": [
 						{
 							"name": 200,
@@ -48,13 +56,6 @@
 						1
 					],
 					"params": [
-						{
-							"name": "domain",
-							"desc": "The unique domain of the club.",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						},
 						{
 							"name": "home",
 							"req": true,
