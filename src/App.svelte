@@ -21,7 +21,7 @@
 						{#each item.items as item}
 							<details id={item.id}>
 								<summary class="rel">
-									<h3 class="inl path">/{item.req}</h3>
+									<h3 class="inl path">{item.req}</h3>
 									<span class="inl summary">
 										{item.summary}
 									</span>
