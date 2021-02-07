@@ -54,17 +54,18 @@
 										<pre><code>{@html data.refs[item.ref]}</code></pre>
 									{/if}
 									{#if item.params}
-									<Items
-										data={item.params}
-										ref={data.refs}
-										title="Parameters"
-									/>
+										<Items
+											data={item.params}
+											ref={data.refs}
+											title="Parameters"
+										/>
+									{/if}
 									{#if item.responses}
-									<Items
-										data={item.responses}
-										ref={data.refs}
-										title="Responses"
-									/>
+										<Items
+											data={item.responses}
+											ref={data.refs}
+											title="Responses"
+										/>
 									{/if}
 								</div>
 							</details>
@@ -79,9 +80,9 @@
 		{/if}
 	</main>
 	<footer>
-		Powered by <a href="https://github.com/timoanttila/Svelte-Doksut"
-			>Doksut</a
-		>, created by <a href="https://github.com/timoanttila">Timo Anttila</a>
+		Powered by
+		<a href="https://github.com/timoanttila/Svelte-Doksut">Doksut</a>,
+		created by <a href="https://github.com/timoanttila">Timo Anttila</a>
 	</footer>
 </div>
 
@@ -91,6 +92,9 @@
 			--green: #263927;
 			--brown: #362e26;
 			--light: #fcf4ea;
+		}
+		*:focus {
+			outline: none;
 		}
 		body {
 			margin: 0;
