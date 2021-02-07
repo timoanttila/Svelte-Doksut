@@ -91,7 +91,7 @@
 		}
 	],
 	"refs": {
-		"Error": "{\n  \"status\": {\n    \"type\": \"integer\",\n    \"default\": 400,\n    \"minLength\": 3,\n    \"maxLength\": 3\n  },\n  \"message\": {\n    \"type\": \"string\",\n    \"maxLength\": 50\n  }\n}"
+		"Error": "{\n  \"status\": {\n    \"type\": \"number\",\n    \"default\": 400,\n    \"minLength\": 3,\n    \"maxLength\": 3\n  },\n  \"message\": {\n    \"type\": \"string\",\n    \"maxLength\": 50\n  }\n}"
 	},
 	"security": "All paths in the lock image require token verification. The token is sent in the header format: \"Authorization: Bearer <token>\""
 }
