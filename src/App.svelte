@@ -22,9 +22,9 @@
 							<details id={item.id}>
 								<summary class="rel">
 									<h3 class="inl path">/{item.req}</h3>
-									<span class="inl summary"
-										>{item.summary}</span
-									>
+									<span class="inl summary">
+										{item.summary}
+									</span>
 									{#if item.auth}
 										<div class="locked abs">
 											<svg
@@ -53,16 +53,19 @@
 									{#if item.ref}
 										<pre><code>{@html data.refs[item.ref]}</code></pre>
 									{/if}
+									{#if item.params}
 									<Items
 										data={item.params}
 										ref={data.refs}
 										title="Parameters"
 									/>
+									{#if item.responses}
 									<Items
 										data={item.responses}
 										ref={data.refs}
 										title="Responses"
 									/>
+									{/if}
 								</div>
 							</details>
 						{/each}
