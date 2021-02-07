@@ -29,9 +29,11 @@
 						{/if}
 					</div>
 					<div class="right value">
-						<div class="desc">
-							{item.desc}
-						</div>
+						{#if item.desc}
+							<div class="desc">
+								{item.desc}
+							</div>
+						{/if}
 						{#if item.example}
 							<pre><code>{@html item.example}</code></pre>
 						{/if}
