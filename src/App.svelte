@@ -13,7 +13,6 @@
 		{#if data && data.paths}
 			<h1>{data.title}</h1>
 			<div id="api">{data.api}</div>
-
 			{#each data.paths as item}
 				<div id={item.type}>
 					<h2>{item.type}</h2>
