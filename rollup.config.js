@@ -33,12 +33,11 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'docs/doksut.js'
 	},
 	plugins: [
 		svelte({
 			compilerOptions: {
-				// enable run-time checks when not in production
 				dev: !production
 			}
 		}),
@@ -47,17 +46,8 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
-
-		// In dev mode, call `npm run start` once
-		// the bundle has been generated
 		!production && serve(),
-
-		// Watch the `public` directory and refresh the
-		// browser on changes when not in production
-		!production && livereload('public'),
-
-		// If we're building for production (npm run build
-		// instead of npm run dev), minify
+		!production && livereload('docs'),
 		production && terser()
 	],
 	watch: {
