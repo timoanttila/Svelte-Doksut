@@ -15,7 +15,7 @@
 			"type": "GET",
 			"items": [
 				{
-					"req": "",
+					"req": "/",
 					"id": "sites",
 					"summary": "Search for all Dataline's sports websites.",
 					"desc": "Returns the basic information of all sports clubs maintained by Dataline, which can be used to retrieve site-specific information.",
@@ -39,7 +39,7 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "sites/{domain}/home",
+					"req": "/{domain}/home",
 					"id": "menu",
 					"summary": "Home page content for a sports club.",
 					"desc": "Returns all element information on the front page of the sports club's website ",
