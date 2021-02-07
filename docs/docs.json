@@ -1,6 +1,6 @@
 {
 	"title": "Dataline Sport API",
-	"api": "https://api.sportti.org/sites",
+	"api": "https://api.sportti.org/sites/{domain}/",
 	"creator": {
 		"name": "Timo Anttila",
 		"company": "Tuspe Design Oy",
@@ -39,7 +39,7 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "{domain}/home",
+					"req": "home",
 					"id": "home",
 					"summary": "Home page content for a sports club.",
 					"desc": "Returns all element information on the front page of the sports club's website ",
@@ -78,7 +78,7 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "{domain}/page/{page}",
+					"req": "page/{page}",
 					"id": "page",
 					"summary": "Returns page information.",
 					"desc": "Returns the content of a specific page from a sports club site.",
