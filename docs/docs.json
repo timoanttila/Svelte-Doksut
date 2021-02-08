@@ -179,7 +179,7 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "news/{year}/{url}",
+					"req": "news/[year]/[url]",
 					"id": "page",
 					"summary": "Returns page information.",
 					"desc": "Returns the content of a specific page from a sports club site.",
@@ -218,7 +218,7 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "page/{url}",
+					"req": "page/[url]",
 					"id": "page",
 					"summary": "Returns page information.",
 					"desc": "Returns the content of a specific page from a sports club site.",
