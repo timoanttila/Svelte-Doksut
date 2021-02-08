@@ -187,7 +187,7 @@
 		.path::after {
 			content: '►';
 			margin-left: 10px;
-			margin-top: -5px;
+			margin-top: -2px;
 			font-size: 0.8rem;
 			display: inline-block;
 			vertical-align: middle;
@@ -198,10 +198,13 @@
 		summary.main .inl {
 			display: inline-block;
 			vertical-align: middle;
-			margin-bottom: -2px;
 		}
 		summary.main .path {
 			margin-right: 1.5rem;
+			margin-bottom: -2px;
+		}
+		summary.main .summary {
+			margin-top: 4px;
 		}
 		.content.main {
 			margin-top: 0.7rem;
