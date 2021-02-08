@@ -33,7 +33,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'docs/doksut.js'
+		file: 'public/doksut.js'
 	},
 	plugins: [
 		svelte({
@@ -47,7 +47,7 @@ export default {
 		}),
 		commonjs(),
 		!production && serve(),
-		!production && livereload('docs'),
+		!production && livereload('public'),
 		production && terser()
 	],
 	watch: {

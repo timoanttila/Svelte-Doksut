@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Items from './components/items.svelte';
+	import Example from './components/example.svelte';
 	let data = {};
 	onMount(async () => {
 		const res = await fetch(`/docs.json`);
@@ -12,14 +13,20 @@
 	<main class="block">
 		{#if data && data.paths}
 			<h1>{data.title}</h1>
-			<div id="api">{data.api}</div>
+			<div id="api" class="mb"><strong>{data.api}</strong></div>
+			{#if data.creator}
+				<div class="name">
+					{data.creator.name}, {data.creator.company}<br />
+					{data.creator.email}
+				</div>
+			{/if}
 			{#each data.paths as item}
 				<div id={item.type}>
 					<h2>{item.type}</h2>
 					<div id={item.type + 'Items'}>
 						{#each item.items as item}
-							<details id={item.id}>
-								<summary class="rel">
+							<details id={item.id} class="main">
+								<summary class="rel main">
 									<h3 class="inl path">{item.req}</h3>
 									<span class="inl summary">
 										{item.summary}
@@ -39,7 +46,7 @@
 										</div>
 									{/if}
 								</summary>
-								<div class="content">
+								<div class="content main">
 									<div class="desc mb">{item.desc}</div>
 									{#if item.updated}
 										<div class="upd mb">
@@ -47,10 +54,10 @@
 										</div>
 									{/if}
 									{#if item.example}
-										<pre><code>{@html item.example}</code></pre>
+										<Example item={item.example} />
 									{/if}
 									{#if item.ref}
-										<pre><code>{@html data.refs[item.ref]}</code></pre>
+										<Example item={data.refs[item.ref]} />
 									{/if}
 									{#if item.params}
 										<Items
@@ -99,9 +106,15 @@
 			margin: 0;
 			box-sizing: border-box;
 			font-weight: 400;
-			font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-				Roboto, Helvetica, Arial, sans-serif;
+			font-family: Arial, Helvetica, sans-serif;
 			line-height: 1.5;
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		strong {
+			font-weight: 700;
 		}
 		h1 {
 			font-size: 1.8rem;
@@ -115,11 +128,9 @@
 		h2 {
 			margin: 1.5rem 0 0.5rem;
 		}
-		summary h3 {
-			font-size: 1.4rem;
-		}
+		summary h3,
 		.params h3 {
-			font-size: 1.6rem;
+			font-size: 1.4rem;
 		}
 		h4 {
 			font-size: 1.2rem;
@@ -135,8 +146,8 @@
 		}
 		.abs {
 			position: absolute;
-			top: 2px;
-			right: 5px;
+			top: 0;
+			right: 1rem;
 		}
 		.mb {
 			margin-bottom: 1rem;
@@ -145,32 +156,55 @@
 			line-height: 1;
 			color: darkred;
 		}
+		#wrap {
+			min-height: 100vh;
+			grid-template-rows: 1fr 38.66px;
+		}
 		main {
 			max-width: 1000px;
 			width: 90vw;
 			margin: 2rem auto;
 		}
-		details {
-			padding: 0.5rem;
+		details.main {
+			padding: 0.5rem 0.5rem 0.7rem;
 			border: 2px solid var(--green);
 			border-radius: 4px;
 		}
 		details + details {
 			margin-top: 8px;
 		}
-		details summary {
-			cursor: pointer;
+		summary.main {
+			list-style: none;
+			padding: 0 1rem;
 		}
-		details summary .inl {
+		summary.main::-webkit-details-marker {
+			display: none;
+		}
+		summary {
+			cursor: pointer;
+			line-height: 1;
+		}
+		.path::after {
+			content: '►';
+			margin-left: 10px;
+			margin-top: -5px;
+			font-size: 0.8rem;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		details[open] .path:after {
+			content: '▼';
+		}
+		summary.main .inl {
 			display: inline-block;
 			vertical-align: middle;
 			margin-bottom: -2px;
 		}
-		details summary .path {
+		summary.main .path {
 			margin-right: 1.5rem;
 		}
-		details .content {
-			margin-top: 0.5rem;
+		.content.main {
+			margin-top: 0.7rem;
 			padding: 1rem;
 			border-top: 2px solid var(--green);
 		}
@@ -184,6 +218,12 @@
 		}
 		details .item + .item {
 			margin-top: 0.8rem;
+		}
+		.params + .params {
+			margin-top: 2rem;
+		}
+		.desc {
+			margin-bottom: 15px;
 		}
 		#security {
 			margin-top: 2rem;
@@ -200,13 +240,6 @@
 		}
 		footer a {
 			text-decoration: none;
-		}
-		#wrap {
-			min-height: 100vh;
-			grid-template-rows: 1fr 38.66px;
-		}
-		.params + .params {
-			margin-top: 2rem;
 		}
 	</style></svelte:head
 >

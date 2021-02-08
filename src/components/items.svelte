@@ -1,4 +1,5 @@
 <script>
+	import Example from './example.svelte';
 	export let data;
 	export let title;
 	export let ref;
@@ -35,10 +36,10 @@
 							</div>
 						{/if}
 						{#if item.example}
-							<pre><code>{@html item.example}</code></pre>
+							<Example item={item.example} />
 						{/if}
 						{#if item.ref}
-							<pre><code>{@html ref[item.ref]}</code></pre>
+							<Example item={ref[item.ref]} />
 						{/if}
 					</div>
 				</div>
