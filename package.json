@@ -1,6 +1,28 @@
 {
-  "name": "svelte-app",
+  "name": "doksut",
   "version": "1.0.0",
+  "description": "Documenting a REST API project is really important, but usually cumbersome. Doksut provides an easy way to create an easy-to-read website from a json file.",
+  "homepage": "https://doksut.timoanttila.com",
+  "bugs": "https://github.com/timoanttila/Svelte-Doksut/issues",
+  "license": "GNU GPL",
+  "keywords": [
+    "svelte",
+    "svelte-framework",
+    "svelte-example",
+    "svelte-template",
+    "documentation",
+    "documentation-tool",
+    "rollup",
+    "website",
+    "spa",
+    "pwa",
+    "webapp"
+  ],
+  "author": {
+    "name": "Timo Anttila",
+    "email": "moro@tuspe.com",
+    "url": "https://timoanttila.com"
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
