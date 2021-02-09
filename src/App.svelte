@@ -105,6 +105,7 @@
 		:root {
 			--green: #263927;
 			--brown: #362e26;
+			--blue: #20a3cb;
 			--light: #fcf4ea;
 		}
 		*:focus {
@@ -187,6 +188,12 @@
 		}
 		summary.main::-webkit-details-marker {
 			display: none;
+		}
+		summary.main:hover .path {
+			color: var(--blue);
+		}
+		summary.main:hover .locked svg {
+			fill: var(--blue);
 		}
 		summary {
 			cursor: pointer;
