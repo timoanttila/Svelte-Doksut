@@ -13,9 +13,11 @@
 	<main class="block">
 		{#if data && data.paths}
 			<h1>{data.title}</h1>
-			<div id="api" class="mb"><strong>{data.api}</strong></div>
+			<div id="api"><strong>{data.api}</strong></div>
+			<div class="updated mb">{data.updated}</div>
+
 			{#if data.creator}
-				<div class="name">
+				<div class="name mb">
 					{data.creator.name}, {data.creator.company}<br />
 					{data.creator.email}
 				</div>
@@ -48,11 +50,17 @@
 								</summary>
 								<div class="content main">
 									<div class="desc mb">{item.desc}</div>
-									{#if item.updated}
-										<div class="upd mb">
-											Updated: {item.updated}
-										</div>
-									{/if}
+									<div class="upd mb">
+										Users:
+										{#each item.users as u}
+											<span class="user">
+												{data.users[u]}
+											</span>
+										{/each}
+										{#if item.updated}
+											| Updated: {item.updated}
+										{/if}
+									</div>
 									{#if item.example}
 										<Example item={item.example} />
 									{/if}
@@ -187,7 +195,7 @@
 		.path::after {
 			content: '►';
 			margin-left: 10px;
-			margin-top: -5px;
+			margin-top: -2px;
 			font-size: 0.8rem;
 			display: inline-block;
 			vertical-align: middle;
@@ -198,25 +206,31 @@
 		summary.main .inl {
 			display: inline-block;
 			vertical-align: middle;
-			margin-bottom: -2px;
 		}
 		summary.main .path {
 			margin-right: 1.5rem;
+			margin-bottom: -2px;
+		}
+		summary.main .summary {
+			margin-top: 4px;
 		}
 		.content.main {
 			margin-top: 0.7rem;
 			padding: 1rem;
 			border-top: 2px solid var(--green);
 		}
-		details .items {
+		.items {
 			margin-top: 0.5rem;
 		}
-		details .item {
+		.item {
 			border-top: 1px solid var(--green);
 			padding-top: 0.8rem;
 			grid-template-columns: 175px 1fr;
 		}
-		details .item + .item {
+		.user + .user:before {
+			content: ', ';
+		}
+		.item + .item {
 			margin-top: 0.8rem;
 		}
 		.params + .params {
