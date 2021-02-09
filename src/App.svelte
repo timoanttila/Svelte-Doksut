@@ -209,7 +209,6 @@
 		}
 		summary.main .path {
 			margin-right: 1.5rem;
-			margin-bottom: -2px;
 		}
 		summary.main .summary {
 			margin-top: 4px;
@@ -225,7 +224,7 @@
 		.item {
 			border-top: 1px solid var(--green);
 			padding-top: 0.8rem;
-			grid-template-columns: 175px 1fr;
+			grid-template-columns: 125px 1fr;
 		}
 		.user + .user:before {
 			content: ', ';
@@ -254,6 +253,19 @@
 		}
 		footer a {
 			text-decoration: none;
+		}
+		@media screen and (min-width: 750px) {
+			summary.main .path {
+				margin-bottom: -2px;
+			}
+		}
+		@media screen and (max-width: 750px) {
+			summary.main .inl {
+				width: 100%;
+			}
+			summary.main .path {
+				margin-bottom: 4px;
+			}
 		}
 	</style></svelte:head
 >
