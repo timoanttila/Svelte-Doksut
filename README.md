@@ -6,7 +6,7 @@ I have done a lot of REST APIs and frontends for those, but unfortunately the pr
 
 However, I really like websites created by Swagger and our partner uses it. I think Swagger’s way of using the JSON file is really good, so I made a simple version of it.
 
-Doksut is a very simple JSON reader that turns data into an easy-to-read website. JSON format and the style of the page is similar to Swagger. The JSON sample codes are awful to write, but I only use them in one project. Not mandatory.
+Doksut is a very simple JSON reader that turns data into an easy-to-read website. JSON format and the style of the page is similar to Swagger.
 
 Builded file [doksut.js](https://github.com/timoanttila/Svelte-Doksut/blob/main/docs/doksut.js) is only 13.8 KB and can be attached to any file on the website. Reads [/docs.json](https://github.com/timoanttila/Svelte-Doksut/blob/main/docs/docs.json) by default.
 
