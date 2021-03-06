@@ -1,78 +1,13 @@
 {
 	"title": "Dataline Sport API",
-	"api": "https://api.sportti.org/sites/{domain}/",
+	"api": "https://sportti.org/sites/[team]/",
 	"creator": {
 		"name": "Timo Anttila",
 		"company": "Tuspe Design Oy",
 		"email": "moro@tuspe.com"
 	},
-	"users": [
-		"Group1",
-		"Group2"
-	],
+	"updated": "06.03.2021",
 	"paths": [
-		{
-			"type": "POST",
-			"items": [
-				{
-					"req": "news",
-					"id": "news",
-					"summary": "News search based on criteria.",
-					"desc": "Provides the ability to search for news by time and content.",
-					"users": [
-						0,
-						1
-					],
-					"example": "{\n  \"dateStart\": { \"type\": \"string\" },\n  \"dateEnd\": { \"type\": \"string\" },\n  \"query\": { \"type\": \"string\" }\n}",
-					"params": [
-						{
-							"name": "news",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						},
-						{
-							"name": "dateStart",
-							"type": "string",
-							"in": "body",
-							"example": "2021-01-01"
-						},
-						{
-							"name": "dateEnd",
-							"type": "string",
-							"in": "body",
-							"example": "2021-06-21"
-						},
-						{
-							"name": "query",
-							"type": "string",
-							"in": "body",
-							"example": "This is a keyword"
-						}
-					],
-					"responses": [
-						{
-							"name": 200,
-							"desc": "Returns the requested information.",
-							"type": "array"
-						},
-						{
-							"name": 201,
-							"desc": "No content.",
-							"type": "object",
-							"ref": "Error"
-						},
-						{
-							"name": 400,
-							"desc": "Bad request.",
-							"type": "object",
-							"ref": "Error"
-						}
-					],
-					"updated": "07.02.2021"
-				}
-			]
-		},
 		{
 			"type": "GET",
 			"items": [
@@ -81,18 +16,6 @@
 					"id": "menu",
 					"summary": "Main menu and basic information.",
 					"desc": "Returns the basic information of the sports club to the website and the information of the main menu.",
-					"users": [
-						0,
-						1
-					],
-					"params": [
-						{
-							"name": "menu",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						}
-					],
 					"responses": [
 						{
 							"name": 200,
@@ -106,25 +29,13 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "07.02.2021"
+					"updated": "06.03.2021"
 				},
 				{
 					"req": "home",
 					"id": "home",
 					"summary": "Home page content for a sports club.",
 					"desc": "Returns all element information on the front page of the sports club's website ",
-					"users": [
-						0,
-						1
-					],
-					"params": [
-						{
-							"name": "home",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						}
-					],
 					"responses": [
 						{
 							"name": 200,
@@ -141,20 +52,32 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "news",
-					"id": "news",
-					"summary": "20 latest news.",
-					"desc": "Returns the 20 most recent news from the selected sports club.",
-					"users": [
-						0,
-						1
-					],
+					"req": "games/[year]",
+					"id": "games",
+					"summary": "Match search.",
+					"desc": "Returns the desired amount of matches for the desired year. Returns all future matches by default.",
+					"example": "games/2021?limit=10",
 					"params": [
 						{
-							"name": "news",
-							"req": true,
-							"type": "string",
-							"in": "query"
+							"name": "limit",
+							"desc": "Desired number of results.",
+							"type": "number",
+							"in": "query",
+							"example": "limit=50"
+						},
+						{
+							"name": "team",
+							"desc": "Returns all games to the team.",
+							"type": "number",
+							"in": "query",
+							"example": "team=13066"
+						},
+						{
+							"name": "division",
+							"desc": "Returns all games in the division.",
+							"type": "number",
+							"in": "query",
+							"example": "division=13066"
 						}
 					],
 					"responses": [
@@ -176,32 +99,49 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "07.02.2021"
+					"updated": "06.03.2021"
 				},
 				{
-					"req": "news/[year]/[url]",
-					"id": "page",
-					"summary": "Returns page information.",
-					"desc": "Returns the content of a specific page from a sports club site.",
-					"users": [
-						0,
-						1
-					],
-					"example": "/news/2021/pahvifiguurit-nyt-myynnissa",
+					"req": "news/[year]",
+					"id": "news",
+					"summary": "News search.",
+					"desc": "Returns the desired amount of news for the desired year.",
+					"example": "news/2021?limit=10",
 					"params": [
 						{
-							"name": "page",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						},
-						{
-							"name": "url",
-							"req": true,
-							"type": "string",
-							"in": "query"
+							"name": "limit",
+							"desc": "Desired number of results, default 20.",
+							"type": "number",
+							"in": "query",
+							"example": "?limit=50"
 						}
 					],
+					"responses": [
+						{
+							"name": 200,
+							"desc": "Returns the requested information.",
+							"type": "array"
+						},
+						{
+							"name": 201,
+							"desc": "No content.",
+							"type": "object",
+							"ref": "Error"
+						},
+						{
+							"name": 400,
+							"desc": "Bad request.",
+							"type": "object",
+							"ref": "Error"
+						}
+					],
+					"updated": "06.03.2021"
+				},
+				{
+					"req": "page/[id|path]",
+					"id": "page",
+					"summary": "Returns page information.",
+					"desc": "Returns the content of a specific page from a sports club site. The search term is either page ID or path.",
 					"responses": [
 						{
 							"name": 200,
@@ -215,37 +155,25 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "07.02.2021"
+					"updated": "06.03.2021"
 				},
 				{
-					"req": "page/[url]",
-					"id": "page",
-					"summary": "Returns page information.",
-					"desc": "Returns the content of a specific page from a sports club site.",
-					"users": [
-						0,
-						1
-					],
-					"example": "/page/yhteistyossa",
-					"params": [
-						{
-							"name": "page",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						},
-						{
-							"name": "url",
-							"req": true,
-							"type": "string",
-							"in": "query"
-						}
-					],
+					"req": "players/[id]",
+					"id": "players",
+					"summary": "Players and their helpers.",
+					"desc": "Returns all the players and helpers of the team. ID is only required if you want information for a specific player.",
+					"example": "players or players/14680",
 					"responses": [
 						{
 							"name": 200,
 							"desc": "Returns the requested information.",
-							"type": "object"
+							"type": "array"
+						},
+						{
+							"name": 201,
+							"desc": "No content.",
+							"type": "object",
+							"ref": "Error"
 						},
 						{
 							"name": 400,
@@ -254,13 +182,13 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "07.02.2021"
+					"updated": "06.03.2021"
 				}
 			]
 		}
 	],
 	"refs": {
-		"Error": "{\n  \"status\": {\n    \"type\": \"number\",\n    \"default\": 400,\n    \"minLength\": 3,\n    \"maxLength\": 3\n  },\n  \"message\": {\n    \"type\": \"string\",\n    \"maxLength\": 50\n  }\n}"
+		"Error": "{\n  \"message\": {\n    \"type\": \"string\",\n    \"maxLength\": 50\n  }\n}"
 	},
 	"security": "All paths in the lock image require token verification. The token is sent in the header format: \"Authorization: Bearer <token>\""
 }
