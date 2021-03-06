@@ -6,7 +6,7 @@
 		"company": "Tuspe Design Oy",
 		"email": "moro@tuspe.com"
 	},
-	"updated": "06.03.2021",
+	"updated": "07.03.2021",
 	"paths": [
 		{
 			"type": "GET",
@@ -142,11 +142,18 @@
 					"id": "page",
 					"summary": "Returns page information.",
 					"desc": "Returns the content of a specific page from a sports club site. The search term is either page ID or path.",
+					"example": "page/10520 or page/partners",
 					"responses": [
 						{
 							"name": 200,
 							"desc": "Returns the requested information.",
 							"type": "object"
+						},
+						{
+							"name": 404,
+							"desc": "Not Found.",
+							"type": "object",
+							"ref": "Error"
 						},
 						{
 							"name": 400,
@@ -158,22 +165,21 @@
 					"updated": "06.03.2021"
 				},
 				{
-					"req": "players/[id]",
+					"req": "players/[id|path]",
 					"id": "players",
 					"summary": "Players and their helpers.",
-					"desc": "Returns all the players and helpers of the team. ID is only required if you want information for a specific player.",
-					"example": "players or players/14680",
+					"desc": "Returns all the players and helpers of the team. ID or path is only required if you want information for a specific player.",
+					"example": "players, players/14680 or players/timo-anttila",
 					"responses": [
 						{
 							"name": 200,
-							"desc": "Returns the requested information.",
+							"desc": "Returns all players by category.",
 							"type": "array"
 						},
 						{
-							"name": 201,
-							"desc": "No content.",
-							"type": "object",
-							"ref": "Error"
+							"name": 200,
+							"desc": "Returns all information for a specific player.",
+							"type": "object"
 						},
 						{
 							"name": 400,
