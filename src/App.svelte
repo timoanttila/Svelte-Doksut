@@ -50,17 +50,19 @@
 								</summary>
 								<div class="content main">
 									<div class="desc mb">{item.desc}</div>
-									<div class="upd mb">
-										Users:
-										{#each item.users as u}
-											<span class="user">
-												{data.users[u]}
-											</span>
-										{/each}
-										{#if item.updated}
-											| Updated: {item.updated}
-										{/if}
-									</div>
+									{#if item.users}
+										<div class="upd mb">
+											Users:
+											{#each item.users as u}
+												<span class="user">
+													{data.users[u]}
+												</span>
+											{/each}
+											{#if item.updated}
+												| Updated: {item.updated}
+											{/if}
+										</div>
+									{/if}
 									{#if item.example}
 										<Example item={item.example} />
 									{/if}
