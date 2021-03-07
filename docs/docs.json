@@ -52,12 +52,20 @@
 					"updated": "07.02.2021"
 				},
 				{
-					"req": "games/[year]",
+					"req": "games",
 					"id": "games",
 					"summary": "Match search.",
-					"desc": "Returns the desired amount of matches for the desired year. Returns all future matches by default.",
-					"example": "games/2021?limit=10",
+					"desc": "Returns a certain amount of matches for the certain season. Returns all future or past matches by default.",
+					"example": "games?year=2021&limit=10",
 					"params": [
+						{
+							"name": "year",
+							"desc": "Desired season.",
+							"type": "number",
+							"in": "query",
+							"req": true,
+							"example": "year=2021"
+						},
 						{
 							"name": "limit",
 							"desc": "Desired number of results.",
@@ -99,21 +107,28 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "06.03.2021"
+					"updated": "07.03.2021"
 				},
 				{
-					"req": "news/[year]",
+					"req": "news",
 					"id": "news",
 					"summary": "News search.",
 					"desc": "Returns the desired amount of news for the desired year.",
-					"example": "news/2021?limit=10",
+					"example": "news?year=2021&limit=10",
 					"params": [
+						{
+							"name": "year",
+							"desc": "Desired year, default current year.",
+							"type": "number",
+							"in": "query",
+							"example": "year=2021"
+						},
 						{
 							"name": "limit",
 							"desc": "Desired number of results, default 20.",
 							"type": "number",
 							"in": "query",
-							"example": "?limit=50"
+							"example": "limit=50"
 						}
 					],
 					"responses": [
@@ -138,11 +153,27 @@
 					"updated": "06.03.2021"
 				},
 				{
-					"req": "page/[id|path]",
+					"req": "page",
 					"id": "page",
 					"summary": "Returns page information.",
 					"desc": "Returns the content of a specific page from a sports club site. The search term is either page ID or path.",
-					"example": "page/10520 or page/partners",
+					"example": "page?id=10520 or page?path=example-path",
+					"params": [
+						{
+							"name": "id",
+							"type": "number",
+							"in": "query",
+							"req": true,
+							"example": "id=1050"
+						},
+						{
+							"name": "path",
+							"type": "string",
+							"in": "query",
+							"req": true,
+							"example": "path=example-page"
+						}
+					],
 					"responses": [
 						{
 							"name": 200,
@@ -165,11 +196,25 @@
 					"updated": "06.03.2021"
 				},
 				{
-					"req": "players/[id|path]",
+					"req": "players",
 					"id": "players",
 					"summary": "Players and their helpers.",
 					"desc": "Returns all the players and helpers of the team. ID or path is only required if you want information for a specific player.",
-					"example": "players, players/14680 or players/timo-anttila",
+					"example": "players, players?id=14680 or players?path=timo-anttila",
+					"params": [
+						{
+							"name": "id",
+							"type": "number",
+							"in": "query",
+							"example": "id=1050"
+						},
+						{
+							"name": "path",
+							"type": "string",
+							"in": "query",
+							"example": "path=timo-anttila"
+						}
+					],
 					"responses": [
 						{
 							"name": 200,
@@ -196,5 +241,5 @@
 	"refs": {
 		"Error": "{\n  \"message\": {\n    \"type\": \"string\",\n    \"maxLength\": 50\n  }\n}"
 	},
-	"security": "All paths in the lock image require token verification. The token is sent in the header format: \"Authorization: Bearer <token>\""
+	"security": "All paths with the lock image require token verification. The token is sent in the header format: \"Authorization: Bearer <token>\". Mobile applications must submit the code assigned to them and the domains of the websites will be verified before making any requests."
 }
