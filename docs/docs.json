@@ -12,46 +12,6 @@
 			"type": "GET",
 			"items": [
 				{
-					"req": "menu",
-					"id": "menu",
-					"summary": "Main menu and basic information.",
-					"desc": "Returns the basic information of the sports club to the website and the information of the main menu.",
-					"responses": [
-						{
-							"name": 200,
-							"desc": "Returns the requested information.",
-							"type": "object"
-						},
-						{
-							"name": 400,
-							"desc": "Bad request.",
-							"type": "object",
-							"ref": "Error"
-						}
-					],
-					"updated": "06.03.2021"
-				},
-				{
-					"req": "home",
-					"id": "home",
-					"summary": "Home page content for a sports club.",
-					"desc": "Returns all element information on the front page of the sports club's website ",
-					"responses": [
-						{
-							"name": 200,
-							"desc": "Returns the requested information.",
-							"type": "object"
-						},
-						{
-							"name": 400,
-							"desc": "Bad request.",
-							"type": "object",
-							"ref": "Error"
-						}
-					],
-					"updated": "07.02.2021"
-				},
-				{
 					"req": "games",
 					"id": "games",
 					"summary": "Match search.",
@@ -100,6 +60,13 @@
 							"type": "number",
 							"in": "query",
 							"example": "serie=646"
+						},
+						{
+							"name": "nextHome",
+							"desc": "Returns the next home game (object).",
+							"type": "number",
+							"in": "query",
+							"example": "nextHome=1"
 						}
 					],
 					"responses": [
@@ -122,6 +89,81 @@
 						}
 					],
 					"updated": "04.04.2021"
+				},
+				{
+					"req": "game/[id]",
+					"id": "game",
+					"summary": "Match basics.",
+					"desc": "Returns the basic information of the match.",
+					"params": [
+						{
+							"name": "id",
+							"desc": "The unique id number of the game.",
+							"type": "number",
+							"req": true,
+							"in": "url"
+						}
+					],
+					"responses": [
+						{
+							"name": 200,
+							"desc": "Returns the requested information.",
+							"type": "array"
+						},
+						{
+							"name": 201,
+							"desc": "No content.",
+							"type": "object",
+							"ref": "Error"
+						},
+						{
+							"name": 400,
+							"desc": "Bad request.",
+							"type": "object",
+							"ref": "Error"
+						}
+					],
+					"updated": "04.04.2021"
+				},
+				{
+					"req": "menu",
+					"id": "menu",
+					"summary": "Main menu and basic information.",
+					"desc": "Returns the basic information of the sports club to the website and the information of the main menu.",
+					"responses": [
+						{
+							"name": 200,
+							"desc": "Returns the requested information.",
+							"type": "object"
+						},
+						{
+							"name": 400,
+							"desc": "Bad request.",
+							"type": "object",
+							"ref": "Error"
+						}
+					],
+					"updated": "06.03.2021"
+				},
+				{
+					"req": "home",
+					"id": "home",
+					"summary": "Home page content for a sports club.",
+					"desc": "Returns all element information on the front page of the sports club's website ",
+					"responses": [
+						{
+							"name": 200,
+							"desc": "Returns the requested information.",
+							"type": "object"
+						},
+						{
+							"name": 400,
+							"desc": "Bad request.",
+							"type": "object",
+							"ref": "Error"
+						}
+					],
+					"updated": "07.02.2021"
 				},
 				{
 					"req": "news",
