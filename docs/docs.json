@@ -100,13 +100,6 @@
 							"type": "number",
 							"in": "query",
 							"example": "serie=646"
-						},
-						{
-							"name": "votes",
-							"desc": "Number of votes for teams.",
-							"type": "number",
-							"in": "query",
-							"example": "votes=1"
 						}
 					],
 					"responses": [
@@ -266,19 +259,23 @@
 					"id": "games",
 					"summary": "Receives the results of visitors' votes.",
 					"desc": "Visitors to the website and mobile app can bet on the winner of the game.",
-					"example": "id=55263&vote=1",
+					"example": "{\"game\": 55263,\"vote\": 1}",
 					"params": [
 						{
-							"name": "id",
+							"name": "game",
+							"desc": "The official id number of the game.",
+							"req": true,
 							"type": "number",
 							"in": "query",
 							"example": "id=55263"
 						},
 						{
 							"name": "vote",
+							"desc": "To whom is the vote given? 1 = home, 2 = visitor",
+							"req": true,
 							"type": "number",
 							"in": "query",
-							"example": "vote=1|2, 1 = home, 2 = visitor"
+							"example": "vote=1"
 						}
 					],
 					"responses": [
