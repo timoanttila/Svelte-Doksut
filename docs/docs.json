@@ -6,7 +6,7 @@
 		"company": "Tuspe Design Oy",
 		"email": "moro@tuspe.com"
 	},
-	"updated": "07.03.2021",
+	"updated": "04.04.2021",
 	"paths": [
 		{
 			"type": "GET",
@@ -55,16 +55,37 @@
 					"req": "games",
 					"id": "games",
 					"summary": "Match search.",
-					"desc": "Returns a certain amount of matches for the certain season. Returns all future or past matches by default.",
+					"desc": "Returns a certain amount of matches for the certain season.",
 					"example": "games?year=2021&limit=10",
 					"params": [
 						{
-							"name": "year",
-							"desc": "Desired season.",
+							"name": "team",
+							"desc": "The unique id number of the sport team.",
+							"type": "number",
+							"req": true,
+							"in": "query",
+							"example": "team=425114685"
+						},
+						{
+							"name": "season",
+							"desc": "Desired season from 2015 to 2021.",
 							"type": "number",
 							"in": "query",
-							"req": true,
-							"example": "year=2021"
+							"example": "season=2021"
+						},
+						{
+							"name": "startDate",
+							"desc": "Desired start date.",
+							"type": "string",
+							"in": "query",
+							"example": "startDate=2021-01-01"
+						},
+						{
+							"name": "endDate",
+							"desc": "Desired end date. Only works with start date.",
+							"type": "string",
+							"in": "query",
+							"example": "endDate=2021-06-21"
 						},
 						{
 							"name": "limit",
@@ -74,18 +95,18 @@
 							"example": "limit=50"
 						},
 						{
-							"name": "team",
-							"desc": "Returns all games to the team.",
+							"name": "serie",
+							"desc": "Returns all games in the division / serie.",
 							"type": "number",
 							"in": "query",
-							"example": "team=13066"
+							"example": "serie=646"
 						},
 						{
-							"name": "division",
-							"desc": "Returns all games in the division.",
+							"name": "votes",
+							"desc": "Number of votes for teams.",
 							"type": "number",
 							"in": "query",
-							"example": "division=13066"
+							"example": "votes=1"
 						}
 					],
 					"responses": [
@@ -107,7 +128,7 @@
 							"ref": "Error"
 						}
 					],
-					"updated": "07.03.2021"
+					"updated": "04.04.2021"
 				},
 				{
 					"req": "news",
@@ -234,6 +255,51 @@
 						}
 					],
 					"updated": "06.03.2021"
+				}
+			]
+		},
+		{
+			"type": "POST",
+			"items": [
+				{
+					"req": "games",
+					"id": "games",
+					"summary": "Receives the results of visitors' votes.",
+					"desc": "Visitors to the website and mobile app can bet on the winner of the game.",
+					"example": "id=55263&vote=1",
+					"params": [
+						{
+							"name": "id",
+							"type": "number",
+							"in": "query",
+							"example": "id=55263"
+						},
+						{
+							"name": "vote",
+							"type": "number",
+							"in": "query",
+							"example": "vote=1|2, 1 = home, 2 = visitor"
+						}
+					],
+					"responses": [
+						{
+							"name": 201,
+							"desc": "Vote registered.",
+							"type": "object"
+						},
+						{
+							"name": 202,
+							"desc": "No effect.",
+							"type": "object"
+						},
+						{
+							"name": 400,
+							"desc": "Match not found or time is in the past.",
+							"type": "object",
+							"ref": "Error"
+						}
+					],
+					"updated": "04.04.2021"
 				}
 			]
 		}
